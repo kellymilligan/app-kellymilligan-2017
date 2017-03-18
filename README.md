@@ -1,6 +1,6 @@
-#Personal website 2017 revision
+# Personal website 2017 revision
 
-A major version/revision to 2016. New build system, new matrix math implementation, style tweaks, copy tweaks, new projects. :beer: :sunny:
+A major version/revision to 2016. New build system, new matrix math implementation, new routig, visual tweaks, copy tweaks, updated projects :beer:
 
 ---
 
@@ -8,12 +8,12 @@ A major version/revision to 2016. New build system, new matrix math implementati
 
 Ensure you've got [node/npm](https://nodejs.org/en/) installed.
 
-####1.
+#### 1.
 ```
 npm install
 ```
 
-####2. 
+#### 2. 
 ```
 npm run dev
 ```

@@ -1,31 +1,138 @@
-import { _, $, BaseObject } from '../common';
+import { _, $, PageObject } from '../common';
 
-import example from '../modules/_example';
+export default Object.assign( Object.create( PageObject ), {
+    
 
-export default Object.assign( Object.create( BaseObject ), {
+    twitterTouchStarted : false,
+    twitterTouchTimer   : null,
+    githubTouchStarted  : false,
+    githubTouchTimer    : null,
+    emailTouchStarted   : false,
+    emailTouchTimer     : null,
 
 
-    example: null,
+    // Setup
+    // -----
 
+    setup: function () {
 
-    setup() {
+        _.bindAll( this, 
+            'onCharacterAnimComplete', 
+            'onTwitterTouchStart', 
+            'onTwitterTouchEnd', 
+            'onGithubTouchStart', 
+            'onGithubTouchEnd', 
+            'onEmailTouchStart', 
+            'onEmailTouchEnd'
+        );
 
-        this.example = this.createChild( example, $('.js-example') );
+        this.ui = {
+
+            name: this.node.find('.js-home__name'),
+            intro: this.node.find('.js-home__intro'),
+            social: this.node.find('.js-home__social'),
+            socialTwitter: this.node.find('.js-home__social-twitter'),
+            socialGithub: this.node.find('.js-home__social-github'),
+            socialEmail: this.node.find('.js-home__social-email')
+        };
+
+        this.setupCharacters();
+
+        this.ui.socialTwitter.on({
+            'touchstart': this.onTwitterTouchStart,
+            'touchend': this.onTwitterTouchEnd
+        });
+
+        this.ui.socialGithub.on({
+            'touchstart': this.onGithubTouchStart,
+            'touchend': this.onGithubTouchEnd
+        });
+
+        this.ui.socialEmail.on({
+            'touchstart': this.onEmailTouchStart,
+            'touchend': this.onEmailTouchEnd
+        });
+
+        // Temp
+        this.show();
     },
 
-    resize() {
+    setupCharacters: function () {
 
-        this.example.resize();
+        this.characters = [];
+
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.name, this.appConfig.IS_MOBILE, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.intro, this.appConfig.IS_MOBILE, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialTwitter, this.appConfig.IS_MOBILE, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialGithub, this.appConfig.IS_MOBILE, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialEmail, this.appConfig.IS_MOBILE, this.characters.length ) );
+
+        this.characterCount = this.characters.length;
     },
 
-    mouseMove() {
 
-        this.example.mouseMove();
+    // Handlers
+    // --------
+
+    onTwitterTouchStart: function () {
+
+        this.twitterTouchStarted = true;
+        clearTimeout( this.twitterTouchTimer );
+        this.twitterTouchTimer = _.delay( function () { this.twitterTouchStarted = false; }.bind(this), 600 );
     },
 
-    onAnimFrame() {
+    onTwitterTouchEnd: function () {
 
-        this.example.animFrame( this.time );
+        if ( this.twitterTouchStarted ) {
+            this.ui.socialTwitter.click();
+        }
+    },
+
+    onGithubTouchStart: function () {
+
+        this.githubTouchStarted = true;
+        clearTimeout( this.githubTouchTimer );
+        this.githubTouchTimer = _.delay( function () { this.githubTouchStarted = false; }.bind(this), 600 );
+    },
+
+    onGithubTouchEnd: function () {
+
+        if ( this.githubTouchStarted ) {
+            this.ui.socialGithub.click();
+        }
+    },
+
+    onEmailTouchStart: function () {
+
+        this.emailTouchStarted = true;
+        clearTimeout( this.emailTouchTimer );
+        this.emailTouchTimer = _.delay( function () { this.emailTouchStarted = false; }.bind(this), 600 );
+    },
+
+    onEmailTouchEnd: function () {
+
+        if ( this.emailTouchStarted ) {
+            this.ui.socialEmail.click();
+        }
+    },
+
+
+    // Routing
+    // -------
+
+    routeHome: function () {
+
+        this.show();
+    },
+
+    routeInfo: function () {
+
+        this.hide();
+    },
+
+    routeWork: function () {
+
+        this.hide();
     }
 
 });

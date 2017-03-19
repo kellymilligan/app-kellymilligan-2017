@@ -1,10 +1,9 @@
-import _ from 'lodash';
-import $ from 'webpack-zepto';
+import { _, $ } from '../common';
 
 export default {
 
 
-    // appConfig: null,
+    appConfig: null,
     windowData: null,
     mouseData: null,
 
@@ -15,7 +14,7 @@ export default {
 
     init(options) {
 
-        // this.appConfig = options.appConfig;
+        this.appConfig = options.appConfig;
         this.windowData = options.windowData;
         this.mouseData = options.mouseData;
 
@@ -32,7 +31,7 @@ export default {
 
         child.init({
 
-            // 'appConfig': this.appConfig,
+            'appConfig': this.appConfig,
             'windowData': this.windowData,
             'mouseData': this.mouseData,
             'node': node,
@@ -46,11 +45,11 @@ export default {
 
     mouseMove() {},
 
-    animFrame(t, options) {
+    animFrame(args) {
 
-        this.time = t;
+        this.time = args[ 1 ];
 
-        this.onAnimFrame(options);
+        this.onAnimFrame( args[ 2 ] );
     },
 
     onAnimFrame() {},

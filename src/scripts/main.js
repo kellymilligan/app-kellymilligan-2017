@@ -1,15 +1,30 @@
 import { _, $ } from './common';
+
+import Background from './modules/background';
+import Nav from './modules/nav';
+
 import HomePage from './pages/home_page';
+// import InfoPage from './pages/info_page';
+// import WorkPage from './pages/work_page';
+
+import clamp from './utils/math/clamp';
 
 export default function () {
 
 
     const BASE_WIDTH = 1440;
+    const BASE_WIDTH_MOBILE = 599;
+    const MIN_SCALE = 0.4;
+    const MAX_SCALE = 1.2;
 
+    let appConfig, windowData, mouseData, ui;
+    
+    let background = null;
+    let nav = null;
     let pages = null;
-    let ui = null;
-    let windowData = null;
-    let mouseData = null;
+
+    let trickleList = [];
+    let trickleLength = 0;
 
     start();
 
@@ -18,6 +33,18 @@ export default function () {
     // -----
 
     function start() {
+
+        appConfig = {
+
+            IS_MOBILE: window.innerWidth <= BASE_WIDTH_MOBILE,
+            IS_IOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
+            IS_SAFARI: navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1,
+            IS_IE10: navigator.appVersion.indexOf("MSIE 10") !== -1
+        };
+
+        if ( appConfig.IS_IE10 ) { $('.browsehappy')[0].style.display = 'block'; }
+        if ( appConfig.IS_SAFARI ) { ui.html.addClass('is-safari'); }
+        if ( appConfig.IS_IOS ) { ui.html.addClass('is-ios'); }
 
         ui = {
 
@@ -32,7 +59,10 @@ export default function () {
             width: 0,
             height: 0,
             ratio: 0,
-            scale: 0
+            scale: 0,
+            FRAME_WIDTH: 7, // as per value in SCSS variables
+            insetWidth: 0,
+            insetHeight: 0
         };
 
         mouseData = {
@@ -43,49 +73,103 @@ export default function () {
             nY: 0
         };
 
+        createBackground();
+        createNav();
         createPages();
+
+        trickleLength = trickleList.length;
+
         addEvents();
         onResize();
 
+        // Remove loader
+        $('#loader').addClass('hide');
+        _.delay( () => $('#loader').remove(), 800 );
+
         // Start anim frame
-        _.defer( function () { window.requestAnimationFrame( onAnimFrame ); } );
+        _.defer( () => window.requestAnimationFrame( onAnimFrame ) );
+    }
+
+    function createBackground() {
+
+        background = _.create( Background );
+
+        background.init({
+            'appConfig': appConfig,
+            'windowData': windowData,
+            'mouseData': mouseData,
+            'node': ui.root.find( '.js-background' )
+        });
+
+        trickleList.push( background );
+    }
+
+    function createNav() {
+
+        nav = _.create( Nav );
+
+        nav.init({
+            'appConfig': appConfig,
+            'windowData': windowData,
+            'mouseData': mouseData,
+            'node': ui.root.find( '.js-page-nav' )
+        });
+
+        trickleList.push( nav );
     }
 
     function createPages() {
 
         pages = {
-
-            home: Object.create( HomePage )
+            'home': _.create( HomePage ),
+            // 'info': _.create( InfoPage ),
+            // 'work': _.create( WorkPage ),
         };
 
-        pages.home.init({
+        pages.home.init({ 'node': ui.root.find('.js-home'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
+        // pages.info.init({ 'node': ui.root.find('.js-info'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
+        // pages.work.init({ 'node': ui.root.find('.js-work'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
 
-            'windowData': windowData,
-            'mouseData': mouseData,
-            'node': ui.root.find( '.js-home' )
-        });
+        _.each( pages, (page) => trickleList.push( page ) );
     }
 
     function addEvents() {
 
+        ui.window.on( 'load', onLoad );
         ui.window.on( 'resize', onResize );
+
         ui.document.on( 'mousemove', onMouseMove );
+        ui.document.on( 'touchstart', onTouchStart );
+        ui.document.on( 'touchmove', onTouchMove );
     }
 
 
     // Handlers
     // --------
 
+    function onLoad() {
+
+        nav.show();
+    }
+
     function onResize() {
 
         windowData.width = ui.window.width();
         windowData.height = ui.window.height();
         windowData.ratio = windowData.width / windowData.height;
-        windowData.scale = windowData.width / BASE_WIDTH;
+
+        windowData.insetWidth = windowData.width - ( windowData.FRAME_WIDTH * 2 );
+        windowData.insetHeight = windowData.height - ( windowData.FRAME_WIDTH * 2 );
+
+        appConfig.IS_MOBILE = windowData.width <= BASE_WIDTH_MOBILE;
+        if ( appConfig.IS_MOBILE ) { ui.html.addClass('is-mobile'); } else { ui.html.removeClass('is-mobile'); }
+
+        var baseWidth = appConfig.IS_MOBILE ? BASE_WIDTH_MOBILE : BASE_WIDTH;
+        windowData.scale = clamp( windowData.width / baseWidth, MIN_SCALE, MAX_SCALE );
 
         ui.html[0].style.fontSize = 10 * windowData.scale + 'px';
 
-        pages.home.resize();
+        trickle( 'resize' );
     }
 
     function onMouseMove(e) {
@@ -96,16 +180,44 @@ export default function () {
         mouseData.nX = ( mouseData.x / windowData.width ) * 2 - 1;
         mouseData.nY = ( mouseData.y / windowData.height ) * 2 - 1;
 
-        pages.home.mouseMove();
+        trickle( 'mouseMove' );
+    }
+
+    function onTouchStart(e) {
+
+        e.clientX = e.originalEvent.touches[0].clientX;
+        e.clientY = e.originalEvent.touches[0].clientY;
+
+        onMouseMove( e );
+    }
+ 
+    function onTouchMove(e) {
+
+        e.clientX = e.originalEvent.touches[0].clientX;
+        e.clientY = e.originalEvent.touches[0].clientY;
+
+        onMouseMove( e );
     }
 
     function onAnimFrame(t) {
 
         const time = Date.now();
 
-        pages.home.animFrame( time );
+        trickle( 'animFrame', time );
 
         window.requestAnimationFrame( onAnimFrame );
+    }
+
+
+    // Trickle
+    // -------
+
+    function trickle(name) {
+
+        for ( var i = 0; i < trickleLength; i++ ) {
+
+            trickleList[ i ][ name ]( arguments );
+        }
     }
 
 }

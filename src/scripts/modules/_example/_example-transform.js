@@ -56,7 +56,7 @@ export default Object.assign( Object.create( BaseObject ), {
 
         let matrixString = matrixMath.getTransform3dString( resultMatrix );
 
-        this.applyCssTransform( this.$node, matrixString );
+        this.applyCssTransform( this.node, matrixString );
     }
 
 });

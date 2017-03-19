@@ -1,0 +1,41 @@
+.root {
+
+    color: $mint;
+    font-size: 2rem;
+    line-height: 1.5;
+    @include font-campton-bold();
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li,
+    a {
+
+        color: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        font-family: inherit;
+        font-weight: inherit;
+
+    }
+
+    a {
+
+        text-decoration: none;
+
+        transition: color 0.3s ease-in-out;
+
+        &:hover,
+        &:active {
+
+            color: $hover;
+
+        }
+
+    }
+
+}

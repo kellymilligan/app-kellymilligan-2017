@@ -1,10 +1,123 @@
 .home {
 
-    .example {
+    @include user-select-none();
 
-        position: fixed;
+    .home__inner {
+
+        display: inline-block;
+        vertical-align: middle;
         width: 100%;
-        height: 100%;
+        margin-top: -3rem;
+
+        h1,
+        p {
+
+            line-height: 1.5;
+
+        }
+
+        h1 {
+
+            margin-bottom: 3rem;
+
+            font-size: 7.2rem;
+            // letter-spacing: 0.12em;
+
+            // text-align: center;
+
+            @include user-select-none();
+
+            .char {
+
+                margin: 0 0.04em;
+
+            }
+
+            @include breakpoint( mobile-all ) {
+
+                font-size: 4.8rem;
+                margin-bottom: 2.3rem;
+
+            }
+
+        }
+
+        p {
+
+            font-size: 4.5rem;
+            // letter-spacing: 0.15em;
+
+            @include user-select-none();
+
+            @include breakpoint( mobile-all ) {
+
+                font-size: 3.1rem;
+
+                .is-ios.is-mobile & {
+
+                    font-size: 2.8rem;
+
+                }
+
+            }
+
+            .char {
+
+                margin: 0 0.04em;
+
+            }
+
+            &.home__intro {
+
+                margin-bottom: 2.8rem;
+
+                text-align: justify;
+                -moz-text-align-last: justify;
+                -webkit-text-align-last: justify;
+                -ms-text-align-last: justify;
+                text-align-last: justify;
+
+            }
+
+            &.home__social {
+
+                text-align: right;
+                text-align-last: right;
+
+                a {
+
+                    display: inline-block;
+                    vertical-align: bottom;
+                    padding-bottom: 2rem;
+
+                    // &.home__social-twitter,
+                    // &.home__social-github {
+
+                    //     width: 4.4rem;
+                    //     height: ( 4.4rem + 2rem );
+                    //     margin-right: 2.4rem;
+
+                    // }
+
+                    // &.home__social-twitter {
+
+                    //     background: url(../images/twitter.svg) no-repeat center center;
+                    //     background-size: 100% 100%;
+
+                    // }
+
+                    // &.home__social-github {
+
+                    //     background: url(../images/github.svg) no-repeat center center;
+                    //     background-size: 100% 100%;
+
+                    // }
+
+                }
+
+            }
+
+        }
 
     }
 

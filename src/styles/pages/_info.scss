@@ -1,0 +1,58 @@
+.info {
+
+    color: $purple;
+    font-size: 3.4rem;
+
+    @include breakpoint( mobile-all ) {
+
+        font-size: 2.3rem;
+
+    }
+
+    @include breakpoint( mobile-n6p ) {
+
+        font-size: 2.25rem;
+
+    }
+
+    @include breakpoint( mobile-i6p ) {
+
+        font-size: 2.4rem;
+
+    }
+
+    .info__inner {
+
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        margin-top: -3rem;
+
+    }
+
+    .info__copy {
+
+        .info__copy-block {
+
+            margin: 3rem 0;
+
+            text-align: justify;
+            -moz-text-align-last: justify;
+            -webkit-text-align-last: justify;
+            -ms-text-align-last: justify;
+            text-align-last: justify;
+
+            @include breakpoint( mobile-all ) {
+
+                -moz-text-align-last: left;
+                -webkit-text-align-last: left;
+                -ms-text-align-last: left;
+                text-align-last: left;
+
+            }
+
+        }
+
+    }
+
+}

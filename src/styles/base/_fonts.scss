@@ -1,0 +1,45 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 3230956, 2016-06-09T15:01:21-0400
+ *
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are
+ * explicitly restricted from using the Licensed Webfonts(s).
+ *
+ * You may obtain a valid license at the URLs below.
+ *
+ * Webfont: Campton-Bold by Rene Bieder
+ * URL: http://www.myfonts.com/fonts/rene-bieder/campton/bold/
+ * Copyright: Copyright &#x00A9; 2016 by Ren&#x00E9; Bieder. All rights reserved.
+ * Licensed pageviews: 10,000
+ *
+ *
+ * License: http://www.myfonts.com/viewlicense?type=web&buildid=3230956
+ *
+ * © 2016 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/314cec");
+
+@font-face {font-family: 'Campton-Bold';src: url('../fonts/314CEC_0_0.eot');src: url('../fonts/314CEC_0_0.eot?#iefix') format('embedded-opentype'),url('../fonts/314CEC_0_0.woff2') format('woff2'),url('../fonts/314CEC_0_0.woff') format('woff'),url('../fonts/314CEC_0_0.ttf') format('truetype');}
+
+
+// Mixins
+$font-fallback: 'Arial', sans-serif;
+
+@mixin font-smoothing() {
+
+    -webkit-font-smoothing: antialiased;
+    // text-shadow: rgba(0, 0, 0, 0.01) 0 1px 0;
+
+}
+
+@mixin font-campton-bold() {
+
+    font-family: 'Campton-Bold', $font-fallback;
+    font-weight: normal;
+    @include font-smoothing();
+
+}

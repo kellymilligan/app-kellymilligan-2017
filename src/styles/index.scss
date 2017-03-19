@@ -4,5 +4,14 @@
 @import 'base/_fonts';
 @import 'base/_responsive';
 
-// Modules
+// General
+@import 'general/_layout';
+@import 'general/_typography';
+
+// Pages
 @import 'pages/_home';
+@import 'pages/_info';
+@import 'pages/_work';
+
+// Modules
+@import 'modules/_page_nav';

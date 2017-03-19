@@ -1,0 +1,246 @@
+@keyframes gallery-loader {
+
+  0% { transform: scale3d( 1, 1, 1 ); }
+  50% { transform: scale3d( 0.7, 0.7, 0.7 ); }
+  100% { transform: scale3d( 1, 1, 1 ); }
+
+}
+
+.work__minimise-hit {
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    display: none;
+    width: 100%;
+    height: 100%;
+
+    z-index: $z-index-3;
+
+    cursor: pointer;
+
+}
+
+.work {
+
+    overflow: hidden;
+
+    font-size: 2.5rem;
+
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+    @include breakpoint( mobile-all ) {
+
+        font-size: 2.4rem;
+
+    }
+
+    .work__inner {
+
+        position: relative;
+
+        display: inline-block;
+        vertical-align: middle;
+        width: 100%;
+        margin-top: -3rem;
+
+        z-index: $z-index-1;
+
+        p {
+
+            -webkit-perspective: 1000px;
+            perspective: 1000px;
+
+            text-align: justify;
+            -moz-text-align-last: justify;
+            -webkit-text-align-last: justify;
+            -ms-text-align-last: justify;
+            text-align-last: justify;
+
+            @include user-select-none();
+
+            @include breakpoint( mobile-all ) {
+
+                text-align: left;
+                -moz-text-align-last: left;
+                -webkit-text-align-last: left;
+                -ms-text-align-last: left;
+                text-align-last: left;
+
+            }
+
+            a {
+
+                @include breakpoint( mobile-all ) {
+
+                    display: block;
+                    margin: 0.2rem 0;
+
+                }
+
+                &.is-selected {
+
+                    color: $hover;
+
+                }
+
+            }
+
+            .char {
+
+                margin: 0 0.04em;
+
+            }
+
+        }
+
+    }
+
+    .work__gallery {
+
+        position: absolute;
+        left: 0;
+        top: 0;
+
+        width: 100%;
+        height: 100%;
+
+        -webkit-perspective: 3000px;
+        perspective: 3000px;
+
+        &.has-maximised {
+
+            z-index: $z-index-1 + 1; // Above .work__inner
+
+        }
+
+        .gallery__item {
+
+            $width: $gallery-item-width;
+            $height: $gallery-item-width / $gallery-item-aspect;
+
+            position: absolute;
+            left: calc( ( 100% - #{$width} ) * 0.5 );
+            top: calc( ( 100% - #{$height} - 3rem ) * 0.5 );
+
+            display: none;
+            width: $width;
+            height: $height;
+
+            -moz-transform: translate3d( 0, 0, 100px );
+            -webkit-transform: translate3d( 0, 0, 100px );
+            transform: translate3d( 0, 0, 100px );
+
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            background: #120d17;
+
+            @include aspect-ratio( superwidescreen ) {
+
+                $width: $gallery-item-width-widescreen;
+                $height: $gallery-item-width-widescreen / $gallery-item-aspect;
+
+                left: calc( ( 100% - #{$width} ) * 0.5 );
+                top: calc( ( 100% - #{$height} - 2rem ) * 0.5 );
+
+                width: $width;
+                height: $height;
+
+            }
+
+            @include aspect-ratio( abovesuperwidescreen ) {
+
+                $width: $gallery-item-width-superwidescreen;
+                $height: $gallery-item-width-superwidescreen / $gallery-item-aspect;
+
+                left: calc( ( 100% - #{$width} ) * 0.5 );
+                top: calc( ( 100% - #{$height} - 1rem ) * 0.5 );
+
+                width: $width;
+                height: $height;
+
+            }
+
+            @include breakpoint( mobile-all ) {
+
+                $width: $gallery-item-width-mobile;
+                $height: $gallery-item-width-mobile / $gallery-item-aspect;
+
+                left: calc( ( 100% - #{$width} ) * 0.5 );
+                top: calc( ( 100% - #{$height} - 3rem ) * 0.5 );
+
+                width: $width;
+                height: $height;
+
+            }
+
+            &.is-maximised {
+
+                z-index: $z-index-1;
+
+            }
+
+            .gallery__item-loader {
+
+                position: absolute;
+                left: calc( ( 100% - #{$gallery-loader-width} ) * 0.5 );
+                top: calc( ( 100% - #{$gallery-loader-width} ) * 0.5 );
+
+                width: $gallery-loader-width;
+                height: $gallery-loader-width;
+
+                border-radius: 50%;
+
+                background: $mint;
+
+                animation: gallery-loader 4s infinite cubic-bezier(0.645, 0.045, 0.355, 1.000);
+
+            }
+
+            > img {
+
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                display: block;
+                width: 100%;
+                height: 100%;
+
+            }
+
+            // &:nth-of-type(1) {
+
+            //     background: rgba( 255, 255, 0, 0.5 );
+
+            // }
+
+            // &:nth-of-type(2) {
+
+            //     background: rgba( 0, 255, 255, 0.5 );
+
+            // }
+
+            // &:nth-of-type(3) {
+
+            //     background: rgba( 255, 0, 255, 0.5 );
+
+            // }
+
+            // &:nth-of-type(4) {
+
+            //     background: rgba( 255, 255, 255, 0.5 );
+
+            // }
+
+        }
+
+    }
+
+}

@@ -1,0 +1,176 @@
+.root {
+
+    -webkit-perspective: 1000px;
+    perspective: 1000px;
+
+    transition: background-color 2s linear;
+    transition-delay: 2.2s;
+
+    &.blend-to-purple {
+
+        background-color: $purple;
+
+    }
+
+    .frame {
+
+        position: relative;
+        left: $frame-width;//0;
+        top: $frame-width;
+
+        width: calc( 100% - #{$frame-width * 2 } );
+        height: calc( 100% - #{$frame-width * 2 } );
+
+    }
+
+    .home,
+    .info,
+    .work {
+
+        position: absolute;
+        left: calc( ( 100% - 104rem ) / 2 );
+        top: 0;
+
+        display: none;
+        width: 104rem;
+        height: 100%;
+
+        z-index: $z-index-pages;
+
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+
+        @include breakpoint( mobile-all ) {
+
+            left: calc( ( 100% - 48rem ) / 2 );
+
+            width: 48rem;
+
+            // For iPhones only, we're adjusting the Z to prevent clipping on
+            // iOS, so down-size to fit as it does on other browsers.
+            .is-ios.is-mobile & {
+
+                left: calc( ( 100% - 44rem ) / 2 );
+
+                width: 44rem;
+
+            }
+
+        }
+
+        &::before {
+
+            content: "";
+
+            display: inline-block;
+            vertical-align: middle;
+            width: 0;
+            height: 100%;
+            margin-right: -0.3em;
+
+        }
+
+    }
+
+    .work {
+
+        left: 0;
+        width: 100%;
+
+        .work__inner {
+
+            margin-left: calc( ( 100% - 104rem ) / 2 );
+            width: 104rem;
+
+        }
+
+        @include breakpoint( mobile-all ) {
+
+            &,
+            .is-ios.is-mobile & {
+
+                left: 0;
+                width: 100%;
+                height: calc( 100% - 4rem );
+
+            }
+
+            .work__inner {
+
+                margin-left: calc( ( 100% - 36rem ) / 2 );
+                width: 36rem;
+
+            }
+
+        }
+
+    }
+
+    .word {
+
+        display: inline-block;
+
+    }
+
+    .char {
+
+        position: relative;
+
+        .char-text {
+
+            visibility: hidden;
+
+            white-space: nowrap;
+
+        }
+
+        .char-anim {
+
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            display: block;
+            width: 100%;
+            height: 100%;
+
+            white-space: nowrap;
+
+            opacity: 0;
+
+            -moz-transform: translate3d(0, 0, 0);
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+
+            // @TODO - Does this have a negative performance impact??
+            will-change: transform, opacity;
+
+            backface-visibility: hidden;
+
+            // Using a pseudo element for this to avoid double characters in the unstyled page
+            &::before {
+
+                content: attr(data-char);
+
+                position: absolute;
+                left: 0;
+                top: 0;
+
+                width: 100%;
+                height: 100%;
+
+            }
+
+        }
+
+    }
+
+}
+
+.scroll {
+
+
+
+}
+

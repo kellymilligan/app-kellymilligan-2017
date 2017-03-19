@@ -39,14 +39,24 @@ module.exports = (options) => {
             })
         ],
         module: {
-            loaders: [{
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel',
-                query: {
-                    presets: ['es2015']
+            loaders: [
+                {
+                    test: /\.js$/,
+                    exclude: /(node_modules|bower_components)/,
+                    loader: 'babel',
+                    query: {
+                        presets: ['es2015']
+                    }
+                },
+                {
+                    test: /\.json$/,
+                    loader: "json-loader"
+                },
+                {
+                    test: /\.(png|woff|woff2|eot|ttf|svg|md)$/,
+                    loader: 'url-loader?limit=100000'
                 }
-            }]
+            ]
         },
         // Fix for: Module not found: Error: Cannot resolve module 'fs'
         node: {

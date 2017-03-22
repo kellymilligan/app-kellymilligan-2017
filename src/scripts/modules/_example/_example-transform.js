@@ -47,7 +47,7 @@ export default Object.assign( Object.create( BaseObject ), {
 
     draw() {
 
-        let time = this.time;
+        let time = this.windowData.time;
 
         let rotateZ = Math.sin( time * 0.00015 );
 

@@ -193,7 +193,7 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
 
         for ( var i = 0; i < this.characterCount; i++ ) {
 
-            this.characters[i].animFrame(this.time);
+            this.characters[i].animFrame();
         }
     },
 

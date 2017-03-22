@@ -414,7 +414,7 @@ define([
             // ---
             var index = this.index + 1;
 
-            var time = this.time + this.timeOffset;
+            var time = this.windowData.time + this.timeOffset;
             var t = time * 0.009;
 
             var progressX = ( 1 - this.animation.progressR ) * ( 15 * this.animation.directionX );

@@ -164,7 +164,7 @@ export default Object.assign( Object.create( BaseObject ), {
 
     render: function () {
 
-        var elapsedTime = ( this.time - this.startTime ) / 1000; // replaces THREE.Clock as there's an error on performance.now() in iOS8
+        var elapsedTime = ( this.windowData.time - this.startTime ) / 1000; // replaces THREE.Clock as there's an error on performance.now() in iOS8
         this.uniforms.time.value = 2700 + elapsedTime; // 15m + elapsed time
 
         var targetX = this.uniforms.mousePos.value.x;

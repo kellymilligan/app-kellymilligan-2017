@@ -213,7 +213,7 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
 
     draw: function () {
 
-        var time = this.time + this.timeOffset;
+        var time = this.windowData.time + this.timeOffset;
         var index = this.index + 1;
 
         this.distCurrent += ( this.distTarget - this.distCurrent ) * 0.1;

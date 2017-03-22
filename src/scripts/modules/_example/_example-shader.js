@@ -80,7 +80,7 @@ export default Object.assign( Object.create( BaseObject ), {
 
     render() {
 
-        this.uniforms.time.value = this.time;
+        this.uniforms.time.value = this.windowData.time;
 
         this.renderer.render( this.scene, this.camera );
     }

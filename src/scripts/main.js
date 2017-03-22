@@ -62,7 +62,8 @@ export default function () {
             scale: 0,
             FRAME_WIDTH: 7, // as per value in SCSS variables
             insetWidth: 0,
-            insetHeight: 0
+            insetHeight: 0,
+            time: 0
         };
 
         mouseData = {
@@ -201,9 +202,9 @@ export default function () {
 
     function onAnimFrame(t) {
 
-        const time = Date.now();
+        windowData.time = Date.now();
 
-        trickle( 'animFrame', time );
+        trickle( 'animFrame' );
 
         window.requestAnimationFrame( onAnimFrame );
     }

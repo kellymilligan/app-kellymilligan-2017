@@ -45,11 +45,9 @@ export default {
 
     mouseMove() {},
 
-    animFrame(args) {
+    animFrame() {
 
-        this.time = args[ 1 ];
-
-        this.onAnimFrame( args[ 2 ] );
+        this.onAnimFrame();
     },
 
     onAnimFrame() {},

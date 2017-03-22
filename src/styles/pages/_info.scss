@@ -1,23 +1,16 @@
 .info {
 
-    color: $purple;
     font-size: 3.4rem;
 
     @include breakpoint( mobile-all ) {
 
-        font-size: 2.3rem;
+        font-size: 2.1rem;
 
     }
 
     @include breakpoint( mobile-n6p ) {
 
-        font-size: 2.25rem;
-
-    }
-
-    @include breakpoint( mobile-i6p ) {
-
-        font-size: 2.4rem;
+        font-size: 2.3rem;
 
     }
 

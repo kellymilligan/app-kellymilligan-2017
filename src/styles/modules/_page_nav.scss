@@ -39,29 +39,6 @@
 
     }
 
-    &.is-blended {
-
-        a {
-
-            color: $purple;
-
-            &:hover,
-            &:active {
-
-                color: $hover;
-
-            }
-
-            &.is-selected {
-
-                color: $selected;
-
-            }
-
-        }
-
-    }
-
     &.is-on-home {
 
         a {

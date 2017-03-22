@@ -31,8 +31,6 @@ export default Object.assign( Object.create( BaseObject ), {
         if ( this.appConfig.IS_IE10 ) {
 
             this.show = function () {};
-            this.blend = function () {};
-            this.unblend = function () {};
             this.resize = function () {};
             this.mouseMove = function () {};
             this.onAnimFrame = function () {};
@@ -53,13 +51,13 @@ export default Object.assign( Object.create( BaseObject ), {
 
         // this.node.append( this.renderer.domElement );
 
+        this.startTime = Date.now();
+
         this.setupShader();
 
         this.resize();
         this.render();
         this.show();
-
-        this.startTime = Date.now();
     },
 
     setupShader: function () {
@@ -71,7 +69,6 @@ export default Object.assign( Object.create( BaseObject ), {
             'mousePos':          { type: 'v2', value: new THREE.Vector2() },
             'mousePosSmooth':    { type: 'v2', value: new THREE.Vector2() },
             'showProgress':      { type: 'f', value: 0.0 },
-            'blendProgress':     { type: 'f', value: 0.0 },
             // Config
             'DETAIL_LEVEL':      { type: 'f', value: 1.0 },
             'DEFORMATION_LEVEL': { type: 'f', value: 1.0 },
@@ -108,32 +105,12 @@ export default Object.assign( Object.create( BaseObject ), {
         TweenMax.to( this.uniforms.showProgress, 2, {
             'value': 1.0,
             'ease': 'Sine.easeIn',
-            'onStart': function () { this.$canvas[0].style.opacity = 1; }.bind(this)
-        });
-    },
-
-    blend: function () {
-
-        TweenMax.killTweensOf( this.uniforms.blendProgress );
-        TweenMax.to( this.uniforms.blendProgress, 4, {
-            'value': 1.0,
-            'ease': 'Cubic.easeInOut'
+            // 'onStart': function () { this.$canvas[0].style.opacity = 1; }.bind(this)
         });
 
-        this.$root.addClass( 'blend-to-purple' );
+        // Try avoid a frame of black at initial load
+        _.delay( () => this.node.removeClass('initially-hidden'), 500 );
     },
-
-    unblend: function () {
-
-        TweenMax.killTweensOf( this.uniforms.blendProgress );
-        TweenMax.to( this.uniforms.blendProgress, 4, {
-            'value': 0.0,
-            'ease': 'Cubic.easeInOut'
-        });
-
-        this.$root.removeClass( 'blend-to-purple' );
-    },
-
 
     // Update
     // ------
@@ -211,17 +188,14 @@ export default Object.assign( Object.create( BaseObject ), {
 
     routeHome: function () {
 
-        this.unblend();
     },
 
     routeInfo: function () {
 
-        this.blend();
     },
 
     routeWork: function () {
 
-        this.unblend();
     }
 
 });

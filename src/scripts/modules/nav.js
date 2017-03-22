@@ -129,30 +129,6 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
         }
     },
 
-    blend: function () {
-
-        this.hideCancel();
-
-        this.hide( function () {
-
-            this.node.addClass( 'is-blended' );
-            this.show();
-
-        }.bind( this ) );
-    },
-
-    unblend: function () {
-
-        this.hideCancel();
-
-        this.hide( function () {
-
-            this.node.removeClass( 'is-blended' );
-            this.show();
-
-        }.bind( this ) );
-    },
-
     blur: function () {
 
         for ( var i = 0; i < this.characterCount; i++ ) {
@@ -256,19 +232,16 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
 
     routeHome: function () {
 
-        if ( this.prevRouteName === 'info' ) { this.unblend(); }
         this.select( this.$home );
     },
 
     routeInfo: function () {
 
-        this.blend();
         this.select( this.$info );
     },
 
     routeWork: function () {
 
-        if ( this.prevRouteName === 'info' ) { this.unblend(); }
         this.select( this.$work );
     }
 

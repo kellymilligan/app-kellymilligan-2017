@@ -38,6 +38,14 @@ export default function () {
 
     function start() {
 
+        ui = {
+
+            window   : $(window),
+            document : $(document),
+            html     : $(document.documentElement),
+            root     : $('.js-root')
+        };
+
         appConfig = {
 
             IS_MOBILE: window.innerWidth <= BASE_WIDTH_MOBILE,
@@ -49,14 +57,6 @@ export default function () {
         if ( appConfig.IS_IE10 ) { $('.browsehappy')[0].style.display = 'block'; }
         if ( appConfig.IS_SAFARI ) { ui.html.addClass('is-safari'); }
         if ( appConfig.IS_IOS ) { ui.html.addClass('is-ios'); }
-
-        ui = {
-
-            window   : $(window),
-            document : $(document),
-            html     : $(document.documentElement),
-            root     : $('.js-root')
-        };
 
         windowData = {
 
@@ -99,12 +99,8 @@ export default function () {
 
     function setupRouting() {
 
-        router = new Navigo( null, false );
-
-        // Dev - expose for testing
-        // window.ROUTER = router;
-
-        var self = this;
+        // router = new Navigo( null, false );
+        router = new Navigo( null, true, '#!' );
 
         router.on({
 
@@ -118,6 +114,9 @@ export default function () {
         });
 
         nav.addEventListener( 'pageNavigate', onPageNavigate );
+    
+        // Go directly to route if supplied
+        router.resolve();
     }
 
     function createBackground() {
@@ -215,6 +214,8 @@ export default function () {
     }
 
     function onTouchStart(e) {
+
+        console.log(e);
 
         e.clientX = e.originalEvent.touches[0].clientX;
         e.clientY = e.originalEvent.touches[0].clientY;

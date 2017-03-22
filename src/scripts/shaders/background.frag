@@ -9,7 +9,6 @@ uniform float windowRatio;
 uniform vec2  mousePos;
 uniform vec2  mousePosSmooth;
 uniform float showProgress;
-uniform float blendProgress;
 
 // Config
 uniform float DETAIL_LEVEL;
@@ -103,8 +102,7 @@ void main() {
     // Clip and apply deformation
     vec3 color = vec3( smoothstep( 0.49, 0.51, fract( deformation ) ) );
 
-    // Dilute colour strength (no dilution for blended state)
-    color = min( ( color + ( 0.75 * ( 1.0 - blendProgress * 0.6 ) ) ), 1.0 );
+    color = min( ( color + 0.75 ), 1.0 );    
 
     // Add grit
     color += min( rand( offsetPos + deformation * 0.00005 ) * 0.35, 1.0 );
@@ -117,9 +115,6 @@ void main() {
 
     // Mix between purple and real colour for show animation
     color = mix( PURPLE, color, showProgress );
-
-    // Blend with mint state
-    color = mix( color, MINT, 0.65 * blendProgress );
 
     gl_FragColor = vec4( color, 1.0 );
 }

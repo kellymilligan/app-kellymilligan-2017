@@ -92,7 +92,10 @@ html *::after {
 
     z-index: 100;
 
+    background: rgb(24, 16, 30); /* $purple */
+
 }
+
 .background .background__canvas {
 
     position: absolute;
@@ -104,7 +107,12 @@ html *::after {
 
     background: rgb(24, 16, 30); /* $purple */
 
-    opacity: 0;
+}
+
+.background.initially-hidden .background__canvas {
+
+    opacity: 0.01;
+    transition: opacity 1s ease-in-out;
 
 }
 

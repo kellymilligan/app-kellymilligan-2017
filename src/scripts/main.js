@@ -4,8 +4,8 @@ import Background from './modules/background';
 import Nav from './modules/nav';
 
 import HomePage from './pages/home_page';
-// import InfoPage from './pages/info_page';
-// import WorkPage from './pages/work_page';
+import InfoPage from './pages/info_page';
+import WorkPage from './pages/work_page';
 
 import clamp from './utils/math/clamp';
 
@@ -123,13 +123,13 @@ export default function () {
 
         pages = {
             'home': _.create( HomePage ),
-            // 'info': _.create( InfoPage ),
-            // 'work': _.create( WorkPage ),
+            'info': _.create( InfoPage ),
+            'work': _.create( WorkPage )
         };
 
         pages.home.init({ 'node': ui.root.find('.js-home'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
-        // pages.info.init({ 'node': ui.root.find('.js-info'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
-        // pages.work.init({ 'node': ui.root.find('.js-work'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
+        pages.info.init({ 'node': ui.root.find('.js-info'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
+        pages.work.init({ 'node': ui.root.find('.js-work'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
 
         _.each( pages, (page) => trickleList.push( page ) );
     }

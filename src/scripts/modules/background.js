@@ -96,7 +96,7 @@ export default Object.assign( Object.create( BaseObject ), {
         this.uniforms.DETAIL_LEVEL.value      = this.appConfig.IS_MOBILE ? 0.09 : 0.18;
         this.uniforms.DEFORMATION_LEVEL.value = this.appConfig.IS_MOBILE ? 1.0 : 1.2;
         this.uniforms.FLOW_SPEED.value        = this.appConfig.IS_MOBILE ? 1.0 : 1.0;
-        this.uniforms.PROXIMITY_RADIUS.value  = this.appConfig.IS_MOBILE ? 1.2 : 1.6;
+        this.uniforms.PROXIMITY_RADIUS.value  = this.appConfig.IS_MOBILE ? 1.2 : 0.9;
     },
 
 

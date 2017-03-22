@@ -1,5 +1,7 @@
 import { _, $ } from './common';
 
+import Navigo from 'navigo';
+
 import Background from './modules/background';
 import Nav from './modules/nav';
 
@@ -19,6 +21,8 @@ export default function () {
 
     let appConfig, windowData, mouseData, ui;
     
+    let router = null;
+
     let background = null;
     let nav = null;
     let pages = null;
@@ -80,6 +84,8 @@ export default function () {
 
         trickleLength = trickleList.length;
 
+        setupRouting();
+
         addEvents();
         onResize();
 
@@ -91,6 +97,29 @@ export default function () {
         _.defer( () => window.requestAnimationFrame( onAnimFrame ) );
     }
 
+    function setupRouting() {
+
+        router = new Navigo( null, false );
+
+        // Dev - expose for testing
+        // window.ROUTER = router;
+
+        var self = this;
+
+        router.on({
+
+            // Produciton routes
+            '/info': (p) => route( 'info', p ),
+            '/work': (p) => route( 'work', p ),
+            '*':     (p) => route( 'home', p )
+
+            // Dev - force wildcard on specific page
+            // ,'*': function (p) { this.route( 'work', p ); }.bind( this ),
+        });
+
+        nav.addEventListener( 'pageNavigate', onPageNavigate );
+    }
+
     function createBackground() {
 
         background = _.create( Background );
@@ -99,7 +128,8 @@ export default function () {
             'appConfig': appConfig,
             'windowData': windowData,
             'mouseData': mouseData,
-            'node': ui.root.find( '.js-background' )
+            'node': ui.root.find( '.js-background' ),
+            'root': ui.root
         });
 
         trickleList.push( background );
@@ -207,6 +237,39 @@ export default function () {
         trickle( 'animFrame' );
 
         window.requestAnimationFrame( onAnimFrame );
+    }
+
+
+    // Routing
+    // -------
+
+    function onPageNavigate(e) {
+
+        switch( e.targetPage ) {
+
+            case 'HOME':
+                router.navigate('/');
+                break;
+
+            case 'INFO':
+                router.navigate('/info');
+                break;
+
+            case 'WORK':
+                router.navigate('/work');
+                break;
+
+            default:
+                router.navigate('/');
+                break;
+        }
+    }
+
+    function route(routeName, routeOptions) {
+
+        // console.log( 'route: ', routeName, routeOptions );
+
+        trickle( 'route', routeName, routeOptions );
     }
 
 

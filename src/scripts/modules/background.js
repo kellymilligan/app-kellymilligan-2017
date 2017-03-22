@@ -40,7 +40,7 @@ export default Object.assign( Object.create( BaseObject ), {
             return;
         }
 
-        this.$root = options.$root;
+        this.$root = options.root;
         this.$canvas = this.node.find('.js-background__canvas');
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true, canvas: this.$canvas[0] });

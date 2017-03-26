@@ -4,7 +4,7 @@ import wrapCharacters from '../utils/dom/wrap_characters';
 import Character from '../modules/character';
 
 
-export default Object.assign( Object.create( BaseObject ), {
+export default _.assign( _.create( BaseObject ), {
 
 
     isShown        : false,
@@ -110,7 +110,7 @@ export default Object.assign( Object.create( BaseObject ), {
     onAnimFrame: function () {
 
         for ( var i = 0; i < this.characterCount; i++ ) {
-            
+
             this.characters[ i ].animFrame();
         }
     },

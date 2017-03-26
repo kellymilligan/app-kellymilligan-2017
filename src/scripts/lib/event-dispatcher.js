@@ -1,112 +1,94 @@
 /**
  * @author mrdoob / http://mrdoob.com/
- * ---
- * KM - Adapted to use lodash assign and AMD
  */
 
-define([
+export default {
 
-    'lodash'
+    addEventListener: function ( type, listener ) {
 
-], function (
+        if ( this._listeners === undefined ) this._listeners = {};
 
-    _
+        var listeners = this._listeners;
 
-) { 'use strict';
+        if ( listeners[ type ] === undefined ) {
 
-    var EventDispatcher = function () {};
+            listeners[ type ] = [];
 
-    _.assign( EventDispatcher, {
+        }
 
-        addEventListener: function ( type, listener ) {
+        if ( listeners[ type ].indexOf( listener ) === - 1 ) {
 
-            if ( this._listeners === undefined ) this._listeners = {};
+            listeners[ type ].push( listener );
 
-            var listeners = this._listeners;
+        }
 
-            if ( listeners[ type ] === undefined ) {
+    },
 
-                listeners[ type ] = [];
+    hasEventListener: function ( type, listener ) {
 
-            }
+        if ( this._listeners === undefined ) return false;
 
-            if ( listeners[ type ].indexOf( listener ) === - 1 ) {
+        var listeners = this._listeners;
 
-                listeners[ type ].push( listener );
+        if ( listeners[ type ] !== undefined && listeners[ type ].indexOf( listener ) !== - 1 ) {
 
-            }
+            return true;
 
-        },
+        }
 
-        hasEventListener: function ( type, listener ) {
+        return false;
 
-            if ( this._listeners === undefined ) return false;
+    },
 
-            var listeners = this._listeners;
+    removeEventListener: function ( type, listener ) {
 
-            if ( listeners[ type ] !== undefined && listeners[ type ].indexOf( listener ) !== - 1 ) {
+        if ( this._listeners === undefined ) return;
 
-                return true;
+        var listeners = this._listeners;
+        var listenerArray = listeners[ type ];
 
-            }
+        if ( listenerArray !== undefined ) {
 
-            return false;
+            var index = listenerArray.indexOf( listener );
 
-        },
+            if ( index !== - 1 ) {
 
-        removeEventListener: function ( type, listener ) {
-
-            if ( this._listeners === undefined ) return;
-
-            var listeners = this._listeners;
-            var listenerArray = listeners[ type ];
-
-            if ( listenerArray !== undefined ) {
-
-                var index = listenerArray.indexOf( listener );
-
-                if ( index !== - 1 ) {
-
-                    listenerArray.splice( index, 1 );
-
-                }
-
-            }
-
-        },
-
-        dispatchEvent: function ( event ) {
-
-            if ( this._listeners === undefined ) return;
-
-            var listeners = this._listeners;
-            var listenerArray = listeners[ event.type ];
-
-            if ( listenerArray !== undefined ) {
-
-                event.target = this;
-
-                var array = [], i = 0;
-                var length = listenerArray.length;
-
-                for ( i = 0; i < length; i ++ ) {
-
-                    array[ i ] = listenerArray[ i ];
-
-                }
-
-                for ( i = 0; i < length; i ++ ) {
-
-                    array[ i ].call( this, event );
-
-                }
+                listenerArray.splice( index, 1 );
 
             }
 
         }
 
-    } );
+    },
 
-    return EventDispatcher;
+    dispatchEvent: function ( event ) {
 
-} );
+        if ( this._listeners === undefined ) return;
+
+        var listeners = this._listeners;
+        var listenerArray = listeners[ event.type ];
+
+        if ( listenerArray !== undefined ) {
+
+            event.target = this;
+
+            var array = [], i = 0;
+            var length = listenerArray.length;
+
+            for ( i = 0; i < length; i ++ ) {
+
+                array[ i ] = listenerArray[ i ];
+
+            }
+
+            for ( i = 0; i < length; i ++ ) {
+
+                array[ i ].call( this, event );
+
+            }
+
+        }
+
+    }
+
+};

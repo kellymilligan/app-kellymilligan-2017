@@ -1,7 +1,7 @@
 import { _, $, PageObject } from '../common';
 
 export default Object.assign( Object.create( PageObject ), {
-    
+
 
     twitterTouchStarted : false,
     twitterTouchTimer   : null,
@@ -16,13 +16,13 @@ export default Object.assign( Object.create( PageObject ), {
 
     setup: function () {
 
-        _.bindAll( this, 
-            'onCharacterAnimComplete', 
-            'onTwitterTouchStart', 
-            'onTwitterTouchEnd', 
-            'onGithubTouchStart', 
-            'onGithubTouchEnd', 
-            'onEmailTouchStart', 
+        _.bindAll( this,
+            'onCharacterAnimComplete',
+            'onTwitterTouchStart',
+            'onTwitterTouchEnd',
+            'onGithubTouchStart',
+            'onGithubTouchEnd',
+            'onEmailTouchStart',
             'onEmailTouchEnd'
         );
 
@@ -62,10 +62,10 @@ export default Object.assign( Object.create( PageObject ), {
         this.characters = [];
 
         this.characters = _.concat( this.characters, this.createCharacters( this.ui.name, this.appConfig.IS_MOBILE, this.characters.length ) );
-        this.characters = _.concat( this.characters, this.createCharacters( this.ui.intro, this.appConfig.IS_MOBILE, this.characters.length ) );
-        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialTwitter, this.appConfig.IS_MOBILE, this.characters.length ) );
-        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialGithub, this.appConfig.IS_MOBILE, this.characters.length ) );
-        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialEmail, this.appConfig.IS_MOBILE, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.intro, true, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialTwitter, true, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialGithub, true, this.characters.length ) );
+        this.characters = _.concat( this.characters, this.createCharacters( this.ui.socialEmail, true, this.characters.length ) );
 
         this.characterCount = this.characters.length;
     },

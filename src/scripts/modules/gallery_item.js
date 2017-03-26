@@ -1,13 +1,14 @@
-import { _, $, BaseObject } from '../common'; 
+import { _, $, BaseObject } from '../common';
 
 import TweenMax from 'gsap';
 import ProjectImages from '../data/project_images';
 
 import EventDispatcher from '../lib/event-dispatcher';
 
-import matrixTransform from '../utils/animation/matrix_math';
-import applyMatrixCss from '../utils/animation/apply_matrix_css';
+import * as matrixHelpers from '../utils/dom/matrix_helpers';
+import applyCssTransform from '../utils/dom/apply_css_transform';
 
+import degToRad from '../utils/math/deg_to_rad';
 import randomUnitSign from '../utils/math/random_unit_sign';
 
 
@@ -438,15 +439,25 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
 
         // Construct and apply matrices
         // ---
-        var translationMatrix = matrixTransform.getTranslationMatrix( translateX + mTranslateX, translateY + mTranslateY, translateZ );
+        var translationMatrix = matrixHelpers.getTranslationMatrix(
+            translateX + mTranslateX,
+            translateY + mTranslateY,
+            translateZ
+        );
 
-        var rotationXMatrix = matrixTransform.getRotationXMatrix( rotateX * ( 1 - this.animation.zoomS ) + mRotateX + hRotateX );
-        var rotationYMatrix = matrixTransform.getRotationYMatrix( rotateY * ( 1 - this.animation.zoomS ) + mRotateY + hRotateY );
-        var rotationZMatrix = matrixTransform.getRotationZMatrix( rotateZ * ( 1 - this.animation.zoomS ) );
+        var rotationXMatrix = matrixHelpers.getRotationXMatrix( degToRad(
+            rotateX * ( 1 - this.animation.zoomS ) + mRotateX + hRotateX
+        ) );
+        var rotationYMatrix = matrixHelpers.getRotationYMatrix( degToRad(
+            rotateY * ( 1 - this.animation.zoomS ) + mRotateY + hRotateY
+        ) );
+        var rotationZMatrix = matrixHelpers.getRotationZMatrix( degToRad(
+            rotateZ * ( 1 - this.animation.zoomS )
+        ) );
 
-        var scaleMatrix = matrixTransform.getScaleMatrix( mScale + hScale, mScale + hScale, 1 );
+        var scaleMatrix = matrixHelpers.getScaleMatrix( mScale + hScale, mScale + hScale, 1 );
 
-        var resultMatrix = matrixTransform.getResultMatrix(
+        var resultMatrix = matrixHelpers.getResultMatrix(
         [
             translationMatrix,
             rotationXMatrix,
@@ -455,9 +466,9 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
             scaleMatrix
         ] );
 
-        var matrixString = matrixTransform.getTransform3dString( resultMatrix );
+        var matrixString = matrixHelpers.getTransformString( resultMatrix );
 
-        applyMatrixCss( this.node, matrixString );
+        applyCssTransform( this.node, matrixString );
         this.node[0].style.opacity = this.animation.opacity * ( 0.2 + ( 1 - this.animation.blur ) * 0.8 );
 
         // // Avoid z clipping on IOS

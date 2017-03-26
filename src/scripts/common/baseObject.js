@@ -27,7 +27,7 @@ export default {
 
     createChild( childObject, node = null, options = {} ) {
 
-        let child = Object.create( childObject );
+        let child = _.create( childObject );
 
         child.init({
 

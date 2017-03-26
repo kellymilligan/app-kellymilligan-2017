@@ -13,7 +13,7 @@ import degToRad from '../utils/math/deg_to_rad';
 import randomUnitSign from '../utils/math/random_unit_sign';
 
 
-export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
+export default _.assign( _.create( BaseObject ), EventDispatcher, {
 
 
     isActive: false,

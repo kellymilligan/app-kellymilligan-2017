@@ -1,10 +1,10 @@
-import { _, $, BaseObject } from '../common'; 
+import { _, $, BaseObject } from '../common';
 
 import EventDispatcher from '../lib/event-dispatcher';
 import wrapCharacters from '../utils/dom/wrap_characters';
 import Character from '../modules/character';
 
-export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
+export default _.assign( _.create( BaseObject ), EventDispatcher, {
 
 
     isShown        : false,

@@ -2,7 +2,7 @@ import { _, $, PageObject } from '../common';
 
 import GalleryItem from '../modules/gallery_item';
 
-export default Object.assign( Object.create( PageObject ), {
+export default _.assign( _.create( PageObject ), {
 
     $projects     : null,
     $projectLinks : null,

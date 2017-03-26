@@ -1,6 +1,6 @@
 import { _, $, PageObject } from '../common';
 
-export default Object.assign( Object.create( PageObject ), {
+export default _.assign( _.create( PageObject ), {
 
 
     twitterTouchStarted : false,

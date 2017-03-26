@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import BackgroundVertexShader from 'raw!../shaders/background.vert';
 import BackgroundFragmentShader from 'raw!../shaders/background.frag';
 
-export default Object.assign( Object.create( BaseObject ), {
+export default _.assign( _.create( BaseObject ), {
 
 
     $root     : null,

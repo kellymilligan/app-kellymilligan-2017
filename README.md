@@ -1,6 +1,6 @@
 # Personal website 2017 revision
 
-A major version/revision to 2016. New build system, new matrix math implementation, new routing, visual tweaks, copy tweaks, updated projects :beer:
+A major version/revision to 2016. New build system, new matrix math implementation, tweaked routing, visual adjustments, copy adjustments, updated projects :beer:
 
 ---
 

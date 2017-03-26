@@ -137,7 +137,6 @@
             -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0);
 
-            // @TODO - Does this have a negative performance impact??
             will-change: transform, opacity;
 
             backface-visibility: hidden;

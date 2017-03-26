@@ -281,7 +281,7 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
 
         TweenMax.killTweensOf( this.animation, { 'zoomS': true, 'zoomRX': true, 'zoomRY': true, 'zoomT': true } );
 
-        var tD = 1.2;
+        var tD = 1.4;
 
         TweenMax.to( this.animation, tD * 0.2, { //'delay': tD * 0.25,
             'zoomRX': 1,

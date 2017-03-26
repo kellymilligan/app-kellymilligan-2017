@@ -1,4 +1,4 @@
-import { _, $, BaseObject } from '../common'; 
+import { _, $, BaseObject } from '../common';
 import TweenMax from 'gsap';
 import * as THREE from 'three';
 

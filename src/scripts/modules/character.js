@@ -71,7 +71,7 @@ export default Object.assign( Object.create( BaseObject ), EventDispatcher, {
 
         this.timeOffset = Date.now() / ( this.index + 1 );
 
-        this.$anim = this.node.children().eq(1);
+        this.$anim = this.node.children().eq( 1 );
     },
 
 

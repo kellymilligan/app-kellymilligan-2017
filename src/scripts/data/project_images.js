@@ -1,5 +1,23 @@
 export default [
     {
+        id: 'der-magische-adventskalender',
+        images: [
+            'images/projects/der-magische-adventskalender/desktop-1.jpg',
+            'images/projects/der-magische-adventskalender/desktop-2.jpg',
+            'images/projects/der-magische-adventskalender/desktop-3.jpg',
+            'images/projects/der-magische-adventskalender/mobile-1.jpg'
+        ]
+    },
+    {
+        id: 'history-of-worlds',
+        images: [
+            'images/projects/history-of-worlds/desktop-1.jpg',
+            'images/projects/history-of-worlds/desktop-2.jpg',
+            'images/projects/history-of-worlds/desktop-3.jpg',
+            'images/projects/history-of-worlds/mobile-1.jpg'
+        ]
+    },
+    {
         id: 'dove-have-your-say',
         images: [
             'images/projects/dove-have-your-say/desktop-1.jpg',
@@ -18,30 +36,12 @@ export default [
         ]
     },
     {
-        id: 'verizon-better-matters',
-        images: [
-            'images/projects/verizon-better-matters/desktop-1.jpg',
-            'images/projects/verizon-better-matters/desktop-2.jpg',
-            'images/projects/verizon-better-matters/desktop-3.jpg',
-            'images/projects/verizon-better-matters/mobile-1.jpg'
-        ]
-    },
-    {
         id: 'adidas-nmd',
         images: [
             'images/projects/adidas-nmd/desktop-1.jpg',
             'images/projects/adidas-nmd/desktop-2.jpg',
             'images/projects/adidas-nmd/desktop-3.jpg',
             'images/projects/adidas-nmd/mobile-1.jpg'
-        ]
-    },
-    {
-        id: 'resn-dim-sum',
-        images: [
-            'images/projects/resn-dim-sum/desktop-1.jpg',
-            'images/projects/resn-dim-sum/desktop-2.jpg',
-            'images/projects/resn-dim-sum/desktop-3.jpg',
-            'images/projects/resn-dim-sum/desktop-4.jpg'
         ]
     },
     {

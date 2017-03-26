@@ -20,7 +20,7 @@ export default function () {
     const MAX_SCALE = 1.2;
 
     let appConfig, windowData, mouseData, ui;
-    
+
     let router = null;
 
     let background = null;
@@ -114,7 +114,7 @@ export default function () {
         });
 
         nav.addEventListener( 'pageNavigate', onPageNavigate );
-    
+
         // Go directly to route if supplied
         router.resolve();
     }
@@ -215,18 +215,16 @@ export default function () {
 
     function onTouchStart(e) {
 
-        console.log(e);
-
-        e.clientX = e.originalEvent.touches[0].clientX;
-        e.clientY = e.originalEvent.touches[0].clientY;
+        e.clientX = e.touches[0].clientX;
+        e.clientY = e.touches[0].clientY;
 
         onMouseMove( e );
     }
- 
+
     function onTouchMove(e) {
 
-        e.clientX = e.originalEvent.touches[0].clientX;
-        e.clientY = e.originalEvent.touches[0].clientY;
+        e.clientX = e.touches[0].clientX;
+        e.clientY = e.touches[0].clientY;
 
         onMouseMove( e );
     }

@@ -33,6 +33,8 @@ module.exports = (options) => {
             new CopyWebpackPlugin([
                 { from: 'src/styles/critical.css', to: 'styles/critical.css' },
                 { from: 'src/images', to: 'images' },
+                { from: 'src/fonts', to: 'fonts' },
+                { from: 'src/resume', to: 'resume' },
                 { from: 'src/favicon.ico', to: '' },
                 { from: 'src/favicon-16.png', to: '' },
                 { from: 'src/favicon-32.png', to: '' },

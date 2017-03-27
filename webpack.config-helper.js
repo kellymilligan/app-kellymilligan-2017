@@ -33,6 +33,15 @@ module.exports = (options) => {
             new CopyWebpackPlugin([
                 { from: 'src/styles/critical.css', to: 'styles/critical.css' },
                 { from: 'src/images', to: 'images' },
+                { from: 'src/favicon.ico', to: '' },
+                { from: 'src/favicon-16.png', to: '' },
+                { from: 'src/favicon-32.png', to: '' },
+                { from: 'src/favicon-48.png', to: '' },
+                { from: 'src/favicon-62.png', to: '' },
+                { from: 'src/favicon-96.png', to: '' },
+                { from: 'src/favicon-192.png', to: '' },
+                { from: 'src/share.jpg', to: '' },
+                { from: 'src/robots.txt', to: '' },
             ], {
                 ignore: [],
                 copyUnmodified: true

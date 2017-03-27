@@ -20,7 +20,7 @@
 
             margin-bottom: 3rem;
 
-            font-size: 8rem;
+            font-size: 7.5rem;
 
             @include user-select-none();
 
@@ -41,7 +41,8 @@
 
         p {
 
-            font-size: 4.7rem;
+            // font-size: 4.7rem;
+            font-size: 3.75rem;
             letter-spacing: 0.03em;
 
             @include user-select-none();

@@ -26,14 +26,14 @@
 
     overflow: hidden;
 
-    font-size: 2.4rem;
+    font-size: 3.4rem;
 
     -webkit-transform-style: preserve-3d;
             transform-style: preserve-3d;
 
     @include breakpoint( mobile-all ) {
 
-        font-size: 2.0rem;
+        font-size: 2.2rem;
 
     }
 

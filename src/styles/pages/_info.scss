@@ -4,13 +4,13 @@
 
     @include breakpoint( mobile-all ) {
 
-        font-size: 2.1rem;
+        font-size: 2.2rem;
 
-    }
+        .is-ios.is-mobile & {
 
-    @include breakpoint( mobile-n6p ) {
+            font-size: 2.0rem;
 
-        font-size: 2.3rem;
+        }
 
     }
 

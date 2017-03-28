@@ -14,6 +14,7 @@ export default _.assign( _.create( PageObject ), {
 
     items         : null,
     itemCount     : 0,
+    navRef        : null,
 
     hasMaximised  : false,
 
@@ -32,6 +33,8 @@ export default _.assign( _.create( PageObject ), {
             'onGalleryItemClick',
             'onGalleryItemMinimiseComplete'
         );
+
+        this.navRef = options.navRef;
 
         this.$projects = this.node.find( '.js-work__projects' );
         this.$projectLinks = this.$projects.children( 'a' );
@@ -154,6 +157,8 @@ export default _.assign( _.create( PageObject ), {
 
             this.characters[ i ].blur();
         }
+
+        this.navRef.blur();
     },
 
     focus: function (exclusion) {
@@ -164,6 +169,8 @@ export default _.assign( _.create( PageObject ), {
 
             this.characters[ i ].focus();
         }
+
+        this.navRef.focus();
     },
 
 

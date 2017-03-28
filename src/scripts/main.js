@@ -1,3 +1,4 @@
+
 import { _, $ } from './common';
 
 import Navigo from 'navigo';
@@ -158,7 +159,13 @@ export default function () {
 
         pages.home.init({ 'node': ui.root.find('.js-home'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
         pages.info.init({ 'node': ui.root.find('.js-info'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
-        pages.work.init({ 'node': ui.root.find('.js-work'), 'appConfig': appConfig, 'windowData': windowData, 'mouseData': mouseData });
+        pages.work.init({
+            'node': ui.root.find('.js-work'),
+            'appConfig': appConfig,
+            'windowData': windowData,
+            'mouseData': mouseData,
+            'navRef': nav
+        });
 
         _.each( pages, (page) => trickleList.push( page ) );
     }

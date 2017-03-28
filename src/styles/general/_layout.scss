@@ -22,11 +22,9 @@
     .work {
 
         position: absolute;
-        left: calc( ( 100% - 104rem ) / 2 );
         top: 0;
 
         display: none;
-        width: 104rem;
         height: 100%;
 
         z-index: $z-index-pages;
@@ -34,6 +32,25 @@
         -webkit-transform-style: preserve-3d;
         -moz-transform-style: preserve-3d;
         transform-style: preserve-3d;
+
+        &::before {
+
+            content: "";
+
+            display: inline-block;
+            vertical-align: middle;
+            width: 0;
+            height: 100%;
+            margin-right: -0.3em;
+
+        }
+
+    }
+
+    .home {
+
+        left: calc( ( 100% - 102rem ) / 2 );
+        width: 102rem;
 
         @include breakpoint( mobile-all ) {
 
@@ -53,15 +70,28 @@
 
         }
 
-        &::before {
+    }
 
-            content: "";
+    .info {
 
-            display: inline-block;
-            vertical-align: middle;
-            width: 0;
-            height: 100%;
-            margin-right: -0.3em;
+        left: calc( ( 100% - 104rem ) / 2 );
+        width: 104rem;
+
+        @include breakpoint( mobile-all ) {
+
+            left: calc( ( 100% - 48rem ) / 2 );
+
+            width: 48rem;
+
+            // For iPhones only, we're adjusting the Z to prevent clipping on
+            // iOS, so down-size to fit as it does on other browsers.
+            .is-ios.is-mobile & {
+
+                left: calc( ( 100% - 44rem ) / 2 );
+
+                width: 44rem;
+
+            }
 
         }
 
@@ -74,8 +104,8 @@
 
         .work__inner {
 
-            margin-left: calc( ( 100% - 104rem ) / 2 );
-            width: 104rem;
+            width: 100rem;
+            margin-left: calc( ( 100% - 100rem ) / 2 );
 
         }
 

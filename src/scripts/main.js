@@ -11,6 +11,7 @@ import InfoPage from './pages/info_page';
 import WorkPage from './pages/work_page';
 
 import clamp from './utils/math/clamp';
+import detect_ie from './utils/dom/detect_ie';
 
 export default function () {
 
@@ -19,6 +20,8 @@ export default function () {
     const BASE_WIDTH_MOBILE = 599;
     const MIN_SCALE = 0.4;
     const MAX_SCALE = 1.2;
+
+    const IE = detect_ie();
 
     let appConfig, windowData, mouseData, ui;
 
@@ -52,10 +55,16 @@ export default function () {
             IS_MOBILE: window.innerWidth <= BASE_WIDTH_MOBILE,
             IS_IOS: /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream,
             IS_SAFARI: navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1,
-            IS_IE10: navigator.appVersion.indexOf("MSIE 10") !== -1
+            IS_IE: IE.flag,
+            is_IE_EDGE: IE.flag && IE.version === "Edge",
+            is_IE_11: IE.flag && IE.version === "11",
+            IS_IE10_OR_BELOW: IE.flag && IE.version === "<=10"
         };
 
-        if ( appConfig.IS_IE10 ) { $('.browsehappy')[0].style.display = 'block'; }
+        if ( appConfig.IS_IE ) { ui.html.addClass('is-ie'); }
+        if ( appConfig.IS_IE_EDGE ) { ui.html.addClass('is-ie-edge'); }
+        if ( appConfig.IS_IE_11 ) { ui.html.addClass('is-ie-11'); }
+        if ( appConfig.IS_IE10_OR_BELOW ) { ui.html.addClass('is-ie-10-or-below'); $('.browsehappy')[0].style.display = 'block'; }
         if ( appConfig.IS_SAFARI ) { ui.html.addClass('is-safari'); }
         if ( appConfig.IS_IOS ) { ui.html.addClass('is-ios'); }
 

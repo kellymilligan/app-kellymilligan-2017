@@ -52,6 +52,13 @@
         left: calc( ( 100% - 102rem ) / 2 );
         width: 102rem;
 
+        .is-ie & {
+
+            left: calc( ( 100% - 103rem ) / 2 );
+            width: 103rem;
+
+        }
+
         @include breakpoint( mobile-all ) {
 
             left: calc( ( 100% - 48rem ) / 2 );
@@ -106,6 +113,13 @@
 
             width: 100rem;
             margin-left: calc( ( 100% - 100rem ) / 2 );
+
+            .is-ie & {
+
+                width: 102rem;
+                margin-left: calc( ( 100% - 102rem ) / 2 );
+
+            }
 
         }
 

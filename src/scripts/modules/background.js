@@ -28,7 +28,7 @@ export default _.assign( _.create( BaseObject ), {
 
     setup: function (options) {
 
-        if ( this.appConfig.IS_IE10 ) {
+        if ( this.appConfig.IS_IE10_OR_BELOW ) {
 
             this.show = function () {};
             this.resize = function () {};

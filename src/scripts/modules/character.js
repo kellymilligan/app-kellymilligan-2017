@@ -101,7 +101,7 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
         this.isBlurred = true;
 
         TweenMax.killTweensOf( this.animation, { 'blur': true } );
-        TweenMax.to( this.animation, 0.6, { 'blur': 1 } );
+        TweenMax.to( this.animation, 0.7, { 'ease': 'Cubic.easeOut', 'blur': 1 } );
     },
 
     focus: function () {
@@ -110,7 +110,7 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
         this.isBlurred = false;
 
         TweenMax.killTweensOf( this.animation, { 'blur': true } );
-        TweenMax.to( this.animation, 0.6, { 'delay': 0.4, 'blur': 0 } );
+        TweenMax.to( this.animation, 0.7, { 'delay': 0.4, 'ease': 'Sine.easeInOut', 'blur': 0 } );
     },
 
 

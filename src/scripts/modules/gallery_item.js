@@ -1,3 +1,4 @@
+
 import { _, $, BaseObject } from '../common';
 
 import TweenMax from 'gsap';
@@ -56,16 +57,17 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
 
         this.animation = {
 
-            opacity    : 0,
-            progressR  : 0,
-            progressZ  : 0,
-            directionX : 0,
-            directionY : 0,
+            opacity     : 0,
+            progressR   : 0,
+            progressZ   : 0,
+            directionX  : 0,
+            directionY  : 0,
 
-            zoomS      : 0,
-            zoomT      : 0,
-            zoomRX     : 0,
-            zoomRY     : 0,
+            zoomOpacity : 0,
+            zoomS       : 0,
+            zoomT       : 0,
+            zoomRX      : 0,
+            zoomRY      : 0,
 
             hover      : 0,
 
@@ -198,7 +200,7 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
         this.isBlurred = true;
 
         TweenMax.killTweensOf( this.animation, { 'blur': true } );
-        TweenMax.to( this.animation, 0.6, { 'blur': 1 } );
+        TweenMax.to( this.animation, 0.7, { 'ease': 'Cubic.easeOut', 'blur': 1 } );
     },
 
     focus: function () {
@@ -207,7 +209,7 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
         this.isBlurred = false;
 
         TweenMax.killTweensOf( this.animation, { 'blur': true } );
-        TweenMax.to( this.animation, 0.6, { 'delay': 0.4, 'blur': 0 } );
+        TweenMax.to( this.animation, 0.7, { 'ease': 'Sine.easeInOut', 'delay': 0.4, 'blur': 0 } );
     },
 
 
@@ -279,28 +281,28 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
 
     zoomIn: function (callback) {
 
-        TweenMax.killTweensOf( this.animation, { 'zoomS': true, 'zoomRX': true, 'zoomRY': true, 'zoomT': true } );
+        TweenMax.killTweensOf( this.animation, { 'zoomOpacity': true, 'zoomS': true, 'zoomRX': true, 'zoomRY': true, 'zoomT': true } );
 
         var tD = 1.4;
 
-        TweenMax.to( this.animation, tD * 0.2, { //'delay': tD * 0.25,
-            'zoomRX': 1,
-            'zoomRY': 1,
-            'ease': 'Sine.easeInOut'
-        });
-        TweenMax.to( this.animation, tD * 0.8, { 'delay': tD * 0.2,
-            'zoomRX': 0,
-            'zoomRY': 0,
-            'ease': 'Sine.easeInOut'
+        TweenMax.to( this.animation, tD * 0.2, {
+            'zoomOpacity': 1,
+            'zoomS': 0.04,
+            'zoomT': 0.04,
+            'ease': 'Sine.easeIn'
         });
 
-        TweenMax.to( this.animation, tD * 0.25, {
-            'zoomS': 0.25,
-            'zoomT': 0.25,
-            'ease': 'Cubic.easeIn'
+        TweenMax.to( this.animation, 0, { delay: tD * 0.2,
+            'zoomOpacity': 1,
+            'zoomS': 0.85,
+            'zoomT': 0.85,
         });
 
-        TweenMax.to( this.animation, tD * 0.75, { 'delay': tD * 0.25,
+        TweenMax.to( this.animation, tD * 0.3, { delay: tD * 0.25,
+            'zoomOpacity': 0,
+        });
+
+        TweenMax.to( this.animation, tD * 0.75, { delay: tD * 0.25,
             'zoomS': 1,
             'zoomT': 1,
             'ease': 'Cubic.easeOut'
@@ -311,25 +313,31 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
 
     zoomOut: function (callback) {
 
-        TweenMax.killTweensOf( this.animation, { 'zoomS': true, 'zoomRX': true, 'zoomRY': true, 'zoomT': true } );
+        TweenMax.killTweensOf( this.animation, { 'zoomOpacity': true, 'zoomS': true, 'zoomRX': true, 'zoomRY': true, 'zoomT': true } );
 
-        var tD = 1;
+        var tD = 1.4;
 
-        TweenMax.to( this.animation, tD * 0.65, {
-            'zoomRX': -0.9,
-            'zoomRY': -0.9,
-            'ease': 'Sine.easeInOut'
-        });
-        TweenMax.to( this.animation, tD * 0.35, { 'delay': tD * 0.65,
-            'zoomRX': 0,
-            'zoomRY': 0,
-            'ease': 'Sine.easeInOut'
+        TweenMax.to( this.animation, tD * 0.25, {
+            'zoomOpacity': 1,
+            'zoomS': 0.95,
+            'zoomT': 0.95,
+            'ease': 'Sine.easeIn'
         });
 
-        TweenMax.to( this.animation, tD, {
+        TweenMax.to( this.animation, 0, { delay: tD * 0.25,
+            'zoomOpacity': 1,
+            'zoomS': 0.04,
+            'zoomT': 0.04,
+        });
+
+        TweenMax.to( this.animation, tD * 0.4, { delay: tD * 0.42,
+            'zoomOpacity': 0,
+        });
+
+        TweenMax.to( this.animation, tD * 0.58, { delay: tD * 0.42,
             'zoomS': 0,
             'zoomT': 0,
-            'ease': 'Quart.easeInOut'
+            'ease': 'Cubic.easeOut'
         });
 
         TweenMax.delayedCall( tD, callback );
@@ -469,7 +477,7 @@ export default _.assign( _.create( BaseObject ), EventDispatcher, {
         var matrixString = matrixHelpers.getTransformString( resultMatrix );
 
         applyCssTransform( this.node, matrixString );
-        this.node[0].style.opacity = this.animation.opacity * ( 0.2 + ( 1 - this.animation.blur ) * 0.8 );
+        this.node[0].style.opacity = this.animation.opacity * ( 1 - this.animation.zoomOpacity ) * ( 0.2 + ( 1 - this.animation.blur ) * 0.8 );
 
         // // Avoid z clipping on IOS
         // if ( this.appConfig.IS_IOS ) { translateZ += 40; }

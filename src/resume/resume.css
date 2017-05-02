@@ -130,8 +130,8 @@ h1 {
 
 h2 {
 
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-top: 2.2rem;
+    margin-bottom: 0.3rem;
 
     font-size: 2.2rem;
 
@@ -328,21 +328,21 @@ p {
 
 .body__skills h2 {
 
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.3rem;
 
 }
 
 .body__experience .experience__item,
 .body__education .education__item {
 
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
 
 }
 
 .work-hint {
 
     display: block;
-    margin-top: 3.4rem;
+    margin-top: 2.8rem;
 
     font-size: 1.2rem;
 

@@ -1,5 +1,6 @@
 /**
  * @author mrdoob / http://mrdoob.com/
+ * Adapted to export all as methods for use with Object.assign
  */
 
 export default {

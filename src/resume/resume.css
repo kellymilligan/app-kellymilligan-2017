@@ -217,7 +217,7 @@ p {
 
     .page {
 
-        padding-top: 2rem;
+        padding-top: 0;
         padding-bottom: 0;
         margin: 0 auto;
         box-shadow: rgba( 0, 0, 0, 0 ) 0 0 0;
@@ -241,7 +241,7 @@ p {
 
 .head__contact {
 
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 
     font-size: 1.2rem;
 
@@ -284,7 +284,7 @@ p {
 
 .head__masthead h1 {
 
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.2rem;
 
 }
 
@@ -306,7 +306,7 @@ p {
 
 .head__masthead p.head__masthead-tagline {
 
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.2rem;
 
     font-size: 2.1rem;
     line-height: 1.3;
@@ -348,7 +348,7 @@ p {
 .body__experience .experience__item,
 .body__education .education__item {
 
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 
 }
 

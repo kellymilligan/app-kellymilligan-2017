@@ -1,7 +1,4 @@
-import glMatrix from 'gl-matrix';
-
-const mat4 = glMatrix.mat4;
-const vec3 = glMatrix.vec3;
+import { mat4, vec3 } from 'gl-matrix';
 
 export function getRotationXMatrix(radians) {
 

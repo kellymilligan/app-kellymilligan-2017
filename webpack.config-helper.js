@@ -50,11 +50,11 @@ module.exports = (options) => {
             })
         ],
         module: {
-            loaders: [
+            rules: [
                 {
                     test: /\.js$/,
                     exclude: /(node_modules|bower_components)/,
-                    loader: 'babel',
+                    loader: 'babel-loader',
                     query: {
                         presets: ['es2015']
                     }
@@ -66,7 +66,9 @@ module.exports = (options) => {
                 {
                     test: /\.(png|woff|woff2|eot|ttf|svg|md)$/,
                     loader: 'url-loader?limit=100000'
-                }
+                },
+                { test: /\.(glsl|frag|vert)$/, loader: 'raw-loader', exclude: /node_modules/ },
+                { test: /\.(glsl|frag|vert)$/, loader: 'glslify-loader', exclude: /node_modules/ }
             ]
         },
         // Fix for: Module not found: Error: Cannot resolve module 'fs'
@@ -89,9 +91,9 @@ module.exports = (options) => {
             ExtractSASS
         );
 
-        webpackConfig.module.loaders.push({
+        webpackConfig.module.rules.push({
             test: /\.scss$/i,
-            loader: ExtractSASS.extract(['css', 'sass'])
+            loader: ExtractSASS.extract(['css-loader', 'sass-loader'])
         });
 
     }
@@ -101,14 +103,14 @@ module.exports = (options) => {
             new Webpack.HotModuleReplacementPlugin()
         );
 
-        webpackConfig.module.loaders.push({
+        webpackConfig.module.rules.push({
             test: /\.scss$/i,
-            loaders: ['style', 'css', 'sass']
-        }, {
+            loaders: ['style-loader', 'css-loader', 'sass-loader']
+        }/* , {
             test: /\.js$/,
             loader: 'eslint',
             exclude: /node_modules/
-        });
+        } */);
 
         webpackConfig.devServer = {
             contentBase: './dist',
@@ -121,4 +123,4 @@ module.exports = (options) => {
 
     return webpackConfig;
 
-}
+};

@@ -2,8 +2,8 @@ import { _, $, BaseObject } from '../common';
 import TweenMax from 'gsap';
 import * as THREE from 'three';
 
-import BackgroundVertexShader from 'raw!../shaders/background.vert';
-import BackgroundFragmentShader from 'raw!../shaders/background.frag';
+import BackgroundVertexShader from '../shaders/background.vert';
+import BackgroundFragmentShader from '../shaders/background.frag';
 
 export default _.assign( _.create( BaseObject ), {
 

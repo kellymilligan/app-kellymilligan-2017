@@ -1,5 +1,41 @@
 export default [
     {
+        id: 'thinkingbox',
+        images: [
+            'images/projects/the-self-destructing-book/desktop-1.jpg',
+            'images/projects/the-self-destructing-book/desktop-2.jpg',
+            'images/projects/the-self-destructing-book/desktop-3.jpg',
+            'images/projects/the-self-destructing-book/mobile-1.jpg'
+        ]
+    },
+    {
+        id: 'piece18',
+        images: [
+            'images/projects/piece18/piece-18-1.jpg',
+            'images/projects/piece18/piece-18-2.jpg',
+            'images/projects/piece18/piece-18-3.jpg',
+            'images/projects/piece18/piece-18-4.jpg'
+        ]
+    },
+    {
+        id: 'tiaa',
+        images: [
+            'images/projects/the-self-destructing-book/desktop-1.jpg',
+            'images/projects/the-self-destructing-book/desktop-2.jpg',
+            'images/projects/the-self-destructing-book/desktop-3.jpg',
+            'images/projects/the-self-destructing-book/mobile-1.jpg'
+        ]
+    },
+    {
+        id: 'geostorm',
+        images: [
+            'images/projects/the-self-destructing-book/desktop-1.jpg',
+            'images/projects/the-self-destructing-book/desktop-2.jpg',
+            'images/projects/the-self-destructing-book/desktop-3.jpg',
+            'images/projects/the-self-destructing-book/mobile-1.jpg'
+        ]
+    },
+    {
         id: 'der-magische-adventskalender',
         images: [
             'images/projects/der-magische-adventskalender/desktop-1.jpg',
@@ -53,23 +89,23 @@ export default [
             'images/projects/adidas-climaheat/mobile-1.jpg'
         ]
     },
-    {
-        id: 'las-fantasticas-aventuras',
-        images: [
-            'images/projects/las-fantasticas-aventuras/desktop-1.jpg',
-            'images/projects/las-fantasticas-aventuras/desktop-2.jpg',
-            'images/projects/las-fantasticas-aventuras/desktop-3.jpg',
-            'images/projects/las-fantasticas-aventuras/mobile-1.jpg'
-        ]
-    },
-    {
-        id: 'the-self-destructing-book',
-        images: [
-            'images/projects/the-self-destructing-book/desktop-1.jpg',
-            'images/projects/the-self-destructing-book/desktop-2.jpg',
-            'images/projects/the-self-destructing-book/desktop-3.jpg',
-            'images/projects/the-self-destructing-book/mobile-1.jpg'
-        ]
-    }
+    // {
+    //     id: 'las-fantasticas-aventuras',
+    //     images: [
+    //         'images/projects/las-fantasticas-aventuras/desktop-1.jpg',
+    //         'images/projects/las-fantasticas-aventuras/desktop-2.jpg',
+    //         'images/projects/las-fantasticas-aventuras/desktop-3.jpg',
+    //         'images/projects/las-fantasticas-aventuras/mobile-1.jpg'
+    //     ]
+    // },
+    // {
+    //     id: 'the-self-destructing-book',
+    //     images: [
+    //         'images/projects/the-self-destructing-book/desktop-1.jpg',
+    //         'images/projects/the-self-destructing-book/desktop-2.jpg',
+    //         'images/projects/the-self-destructing-book/desktop-3.jpg',
+    //         'images/projects/the-self-destructing-book/mobile-1.jpg'
+    //     ]
+    // }
 
 ];

@@ -20,10 +20,10 @@ export default [
     {
         id: 'tiaa',
         images: [
-            'images/projects/the-self-destructing-book/desktop-1.jpg',
-            'images/projects/the-self-destructing-book/desktop-2.jpg',
-            'images/projects/the-self-destructing-book/desktop-3.jpg',
-            'images/projects/the-self-destructing-book/mobile-1.jpg'
+            'images/projects/tiaa/desktop-1.jpg',
+            'images/projects/tiaa/desktop-2.jpg',
+            'images/projects/tiaa/desktop-3.jpg',
+            'images/projects/tiaa/mobile-1.jpg'
         ]
     },
     {

@@ -1,14 +1,5 @@
 export default [
     {
-        id: 'thinkingbox',
-        images: [
-            'images/projects/thinkingbox/desktop-1.jpg',
-            'images/projects/thinkingbox/desktop-2.jpg',
-            'images/projects/thinkingbox/desktop-3.jpg',
-            'images/projects/thinkingbox/mobile-1.jpg'
-        ]
-    },
-    {
         id: 'piece18',
         images: [
             'images/projects/piece18/piece-18-1.jpg',
@@ -18,21 +9,21 @@ export default [
         ]
     },
     {
+        id: 'thinkingbox',
+        images: [
+            'images/projects/thinkingbox/desktop-1.jpg',
+            'images/projects/thinkingbox/desktop-2.jpg',
+            'images/projects/thinkingbox/desktop-3.jpg',
+            'images/projects/thinkingbox/mobile-1.jpg'
+        ]
+    },
+    {
         id: 'tiaa',
         images: [
             'images/projects/tiaa/desktop-1.jpg',
             'images/projects/tiaa/desktop-2.jpg',
             'images/projects/tiaa/desktop-3.jpg',
             'images/projects/tiaa/mobile-1.jpg'
-        ]
-    },
-    {
-        id: 'geostorm',
-        images: [
-            'images/projects/the-self-destructing-book/desktop-1.jpg',
-            'images/projects/the-self-destructing-book/desktop-2.jpg',
-            'images/projects/the-self-destructing-book/desktop-3.jpg',
-            'images/projects/the-self-destructing-book/mobile-1.jpg'
         ]
     },
     {

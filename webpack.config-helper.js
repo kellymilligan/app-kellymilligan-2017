@@ -1,10 +1,11 @@
 'use strict';
 
-const Path = require('path')
-const Webpack = require('webpack')
+const Path = require('path');
+const Webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractSASS = new ExtractTextPlugin('styles/bundle.css');
 
 module.exports = (options) => {
@@ -81,13 +82,17 @@ module.exports = (options) => {
 
         webpackConfig.entry = ['./src/scripts/index'];
 
+        webpackConfig.optimization = {
+            minimizer: [
+              new UglifyJsPlugin(/* {
+                compress: {
+                  warnings: false,
+                },
+              } */),
+            ]
+        };
+
         webpackConfig.plugins.push(
-            new Webpack.optimize.OccurenceOrderPlugin(),
-            new Webpack.optimize.UglifyJsPlugin({
-                compressor: {
-                    warnings: false
-                }
-            }),
             ExtractSASS
         );
 

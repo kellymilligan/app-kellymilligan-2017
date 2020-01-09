@@ -1,5 +1,23 @@
 export default [
     {
+        id: 'riot-x',
+        images: [
+            'images/projects/riot-x/desktop-1.jpg',
+            'images/projects/riot-x/desktop-2.jpg',
+            'images/projects/riot-x/desktop-3.jpg',
+            'images/projects/riot-x/mobile-1.jpg'
+        ]
+    },
+    {
+        id: 'versa-village',
+        images: [
+            'images/projects/versa-village/versa-village-1.jpg',
+            'images/projects/versa-village/versa-village-2.jpg',
+            'images/projects/versa-village/versa-village-3.jpg',
+            'images/projects/versa-village/versa-village-4.jpg'
+        ]
+    },
+    {
         id: 'piece18',
         images: [
             'images/projects/piece18/piece-18-1.jpg',
@@ -15,6 +33,15 @@ export default [
             'images/projects/thinkingbox/desktop-2.jpg',
             'images/projects/thinkingbox/desktop-3.jpg',
             'images/projects/thinkingbox/mobile-1.jpg'
+        ]
+    },
+    {
+        id: 'twotwentytwo',
+        images: [
+            'images/projects/twotwentytwo/desktop-1.jpg',
+            'images/projects/twotwentytwo/desktop-2.jpg',
+            'images/projects/twotwentytwo/desktop-3.jpg',
+            'images/projects/twotwentytwo/mobile-1.jpg'
         ]
     },
     {
@@ -62,24 +89,24 @@ export default [
             'images/projects/resn-2016/mobile-1.jpg'
         ]
     },
-    {
-        id: 'adidas-nmd',
-        images: [
-            'images/projects/adidas-nmd/desktop-1.jpg',
-            'images/projects/adidas-nmd/desktop-2.jpg',
-            'images/projects/adidas-nmd/desktop-3.jpg',
-            'images/projects/adidas-nmd/mobile-1.jpg'
-        ]
-    },
-    {
-        id: 'adidas-climaheat',
-        images: [
-            'images/projects/adidas-climaheat/desktop-1.jpg',
-            'images/projects/adidas-climaheat/desktop-2.jpg',
-            'images/projects/adidas-climaheat/desktop-3.jpg',
-            'images/projects/adidas-climaheat/mobile-1.jpg'
-        ]
-    },
+    // {
+    //     id: 'adidas-nmd',
+    //     images: [
+    //         'images/projects/adidas-nmd/desktop-1.jpg',
+    //         'images/projects/adidas-nmd/desktop-2.jpg',
+    //         'images/projects/adidas-nmd/desktop-3.jpg',
+    //         'images/projects/adidas-nmd/mobile-1.jpg'
+    //     ]
+    // },
+    // {
+    //     id: 'adidas-climaheat',
+    //     images: [
+    //         'images/projects/adidas-climaheat/desktop-1.jpg',
+    //         'images/projects/adidas-climaheat/desktop-2.jpg',
+    //         'images/projects/adidas-climaheat/desktop-3.jpg',
+    //         'images/projects/adidas-climaheat/mobile-1.jpg'
+    //     ]
+    // },
     // {
     //     id: 'las-fantasticas-aventuras',
     //     images: [

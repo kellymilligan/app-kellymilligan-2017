@@ -1,13 +1,13 @@
 export default [
-    {
-        id: 'riot-x',
-        images: [
-            'images/projects/riot-x/desktop-1.jpg',
-            'images/projects/riot-x/desktop-2.jpg',
-            'images/projects/riot-x/desktop-3.jpg',
-            'images/projects/riot-x/mobile-1.jpg'
-        ]
-    },
+    // {
+    //     id: 'riot-x',
+    //     images: [
+    //         'images/projects/riot-x/desktop-1.jpg',
+    //         'images/projects/riot-x/desktop-2.jpg',
+    //         'images/projects/riot-x/desktop-3.jpg',
+    //         'images/projects/riot-x/mobile-1.jpg'
+    //     ]
+    // },
     {
         id: 'versa-village',
         images: [
@@ -89,15 +89,15 @@ export default [
             'images/projects/resn-2016/mobile-1.jpg'
         ]
     },
-    // {
-    //     id: 'adidas-nmd',
-    //     images: [
-    //         'images/projects/adidas-nmd/desktop-1.jpg',
-    //         'images/projects/adidas-nmd/desktop-2.jpg',
-    //         'images/projects/adidas-nmd/desktop-3.jpg',
-    //         'images/projects/adidas-nmd/mobile-1.jpg'
-    //     ]
-    // },
+    {
+        id: 'adidas-nmd',
+        images: [
+            'images/projects/adidas-nmd/desktop-1.jpg',
+            'images/projects/adidas-nmd/desktop-2.jpg',
+            'images/projects/adidas-nmd/desktop-3.jpg',
+            'images/projects/adidas-nmd/mobile-1.jpg'
+        ]
+    },
     // {
     //     id: 'adidas-climaheat',
     //     images: [

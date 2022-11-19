@@ -34,7 +34,7 @@
     "file-loader": "^3.0.1",
     "gl-matrix": "^3.0.0",
     "gsap": "^2.1.2",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "lodash": "^4.16.3",
     "navigo": "^7.1.2",
     "node-sass": "^4.11.0",
@@ -44,7 +44,7 @@
     "three": "^0.102.1",
     "url-loader": "^1.1.2",
     "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
+    "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.2.1",
     "webpack-zepto": "0.0.1",
     "zepto": "^1.2.0"
